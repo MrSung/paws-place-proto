@@ -1,3 +1,5 @@
+import { Layout } from './components/layout'
+
 export const App = () => {
-  return <>This is a Vite app</>
+  return <Layout>This is a Vite app</Layout>
 }
