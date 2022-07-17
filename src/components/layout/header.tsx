@@ -8,10 +8,8 @@ import {
   Text,
   Menu,
   Divider,
-  Tabs,
-  Burger
+  Tabs
 } from '@mantine/core'
-import { useBooleanToggle } from '@mantine/hooks'
 import {
   Logout,
   Heart,
@@ -42,9 +40,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   userMenu: {
-    [theme.fn.smallerThan('xs')]: {
-      display: 'none'
-    }
+    [theme.fn.smallerThan('xs')]: {}
   },
 
   user: {
@@ -59,21 +55,13 @@ const useStyles = createStyles((theme) => ({
     }
   },
 
-  burger: {
-    [theme.fn.largerThan('xs')]: {
-      display: 'none'
-    }
-  },
-
   userActive: {
     backgroundColor:
       theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white
   },
 
   tabs: {
-    [theme.fn.smallerThan('sm')]: {
-      display: 'none'
-    }
+    [theme.fn.smallerThan('sm')]: {}
   },
 
   tabsList: {
@@ -106,7 +94,6 @@ interface IProps {
 
 export const Header = ({ user, tabs }: IProps) => {
   const { classes, theme, cx } = useStyles()
-  const [opened, toggleOpened] = useBooleanToggle(false)
   const [userMenuOpened, setUserMenuOpened] = useState(false)
 
   const items = tabs.map((tab) => <Tabs.Tab label={tab} key={tab} />)
@@ -116,12 +103,6 @@ export const Header = ({ user, tabs }: IProps) => {
       <Container className={classes.mainSection}>
         <Group position="apart">
           Logo
-          <Burger
-            opened={opened}
-            onClick={() => toggleOpened()}
-            className={classes.burger}
-            size="sm"
-          />
           <Menu
             size={260}
             placement="end"
